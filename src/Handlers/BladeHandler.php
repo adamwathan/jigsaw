@@ -2,7 +2,6 @@
 
 namespace TightenCo\Jigsaw\Handlers;
 
-use Illuminate\Support\Str;
 use TightenCo\Jigsaw\File\OutputFile;
 use TightenCo\Jigsaw\File\TemporaryFilesystem;
 use TightenCo\Jigsaw\PageData;
@@ -28,7 +27,8 @@ class BladeHandler
 
     public function shouldHandle($file)
     {
-        return Str::contains($file->getFilename(), '.blade.');
+        // File should have a valid extra blade extension, or be a blade.php file
+        return $file->getExtraBladeExtension() != '' || $file->getFullExtension() == 'blade.php';
     }
 
     public function handleCollectionItem($file, PageData $pageData)
