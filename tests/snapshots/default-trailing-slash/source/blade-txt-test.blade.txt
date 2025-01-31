@@ -1,0 +1,11 @@
+---
+testvar: variable in blade markdown header
+---
+Some markdown included now...
+
+{{ $page->testvar }}
+
+_the name should be above_
+
+{{ $page->helperFunction() }}
+

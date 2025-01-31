@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <link rel="stylesheet" href="http://jigsaw.test/css/main.css">
+    </head>
+    <body class="border-t-3 border-primary full-height">
+
+        <nav class="navbar navbar-brand">
+            <div class="container">
+                <div class="navbar-content">
+                    <div>
+                        <a class="link-plain text-xxl flex-y-center" href="http://jigsaw.test">
+                            <strong>Jigsaw Collections Demo</strong>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container m-xs-b-6">
+            <div class="row">
+
+                <div class="col-xs-4">
+                    <nav class="nav-list">
+    <a class="nav-list-item " href="http://jigsaw.test/posts">
+        <icon></icon>Posts
+    </a>
+
+    <a class="nav-list-item " href="http://jigsaw.test/pagination">
+        <icon></icon>Pagination
+    </a>
+
+    <a class="nav-list-item " href="http://jigsaw.test/categories/news">
+        <icon></icon>Categories
+    </a>
+
+    <a class="nav-list-item " href="http://jigsaw.test/people">
+        <icon></icon>People
+    </a>
+
+    <a class="nav-list-item " href="http://jigsaw.test/variables">
+        <icon></icon>Variables
+    </a>
+
+    <a class="nav-list-item " href="http://jigsaw.test/json-test.json">
+        <icon></icon>JSON
+    </a>
+
+    <a class="nav-list-item " href="http://jigsaw.test/text-test.txt">
+        <icon></icon>Text
+    </a>
+</nav>
+                    <div class="panel m-xs-t-6">
+    <div class="panel-heading">
+        <h4 class="text-sm wt-light text-uppercase text-brand">Page meta</h4>
+    </div>
+
+    <div class="panel-body">
+        <div class="p-xs-b-4 border-b">
+            <p class="text-xs text-dark-soft text-uppercase">Filename:</p>
+            <p class="p-xs-l-2 text-sm">index_test_two</p>
+        </div>
+
+        <div class="p-xs-y-4 border-b">
+            <p class="text-xs text-dark-soft text-uppercase">Extension:</p>
+            <p class="p-xs-l-2 text-sm">md</p>
+        </div>
+
+        <div class="p-xs-y-4 border-b">
+            <p class="text-xs text-dark-soft text-uppercase">Path:</p>
+            <p class="p-xs-l-2 text-sm">/index_test_two/</p>
+        </div>
+
+        <div class="p-xs-y-4 border-b">
+            <p class="text-xs text-dark-soft text-uppercase">Base URL:</p>
+            <p class="p-xs-l-2 text-sm">http://jigsaw.test</p>
+        </div>
+
+        <div class="p-xs-y-4 border-b">
+            <p class="text-xs text-dark-soft text-uppercase">URL:</p>
+            <p class="p-xs-l-2 text-sm">http://jigsaw.test/index_test_two/</p>
+        </div>
+
+        <div class="p-xs-t-4">
+            <p class="text-xs text-dark-soft text-uppercase">Global Variable:</p>
+            <p class="p-xs-l-2 text-sm">some global variable</p>
+        </div>
+    </div>
+</div>
+                                    </div>
+
+                <div class="col-xs-8 demo-page">
+                        <h2>Features</h2>
+    <h3>Enhanced permalink support</h3>
+
+<ul>
+<li>Permalinks for collection items can be configured with the optional <code>path</code> key in <code>collections.php</code></li>
+<li>If <code>path</code> is not specified, permalinks will default to slugified filename</li>
+<li>Global <code>slugify()</code> helper added for easy use in permalink or helper functions</li>
+<li><p>Shorthand for easily specifying common permalink structures:</p>
+
+<ul>
+<li><code>path</code> key can be a string rather than a closure; if it's a string, any bracketed parameters like <code>{filename}</code> will be replaced with values</li>
+<li>prepending a separator to a parameter name will slugify that parameter, using that separator (e.g. <code>{+filename}</code> will yield <code>the+slugified+filename</code>)</li>
+<li>any dates from YAML front matter can be formatted using PHP date formatting codes, by following the parameter name with a pipe: <code>{date|Y/m/d}</code>, for example, yields <code>2016/08/29</code>.</li>
+<li><p>if no parameters are included, the slugified filename will be appended by default. This allows users to simply specify a collection subdirectory: <code>'path' =&gt; 'posts'</code> will yield item URLs like <code>/posts/the-slugified-filename</code>.</p></li>
+<li><p><strong>Examples of</strong> <code>path</code> <strong>shorthand syntax:</strong></p></li>
+<li><p><code>'people'</code> yields <code>/people/the-slugified-filename</code></p></li>
+<li><code>'people/{+filename}'</code> yields <code>./people/the+slugified+filename</code></li>
+<li><code>'{collection}/{date|Y}/{title}'</code> yields <code>./people/2016/The Item Title</code></li>
+<li><code>'{collection}/{date|Y/m/d}/{+title}'</code> yields <code>./people/2016/08/29/the+item+title</code></li>
+</ul></li>
+</ul>
+
+<hr />
+
+<h3>Default frontmatter variables</h3>
+
+<ul>
+<li>Default frontmatter variables at the collection level can be specified with the <code>variables</code> key in <code>collections.php</code>:</li>
+</ul>
+
+<pre><code>'posts' =&gt; [
+    'variables' =&gt; [
+        'author' =&gt; 'Editorial Staff'
+    ],
+...
+</code></pre>
+
+<hr />
+
+<h3>Sorting collections</h3>
+
+<ul>
+<li>Collections can be sorted by one or more criteria specified in <code>collections.php</code>.</li>
+<li><code>sort</code> can contain a single variable name, or an array of multiple variables for a hierarchical sort.</li>
+<li>Sort order defaults to ascending; variable names can optionally be prepended with <code>+</code>.</li>
+<li>Variable names can be prepended with <code>-</code> for a descending sort order.</li>
+</ul>
+
+<pre><code>'posts' =&gt; [
+    'sort' =&gt; '-date',
+...
+</code></pre>
+
+<p>or</p>
+
+<pre><code>'posts' =&gt; [
+    'sort' =&gt; ['-date', '+author'],
+...
+</code></pre>
+
+<hr />
+
+<h3>Collection items contain a reference to other collection items</h3>
+
+<ul>
+<li><code>$items</code> can reference other collection items using <code>getNext()</code>, <code>getPrevious()</code>, <code>getFirst()</code>, <code>getLast()</code></li>
+<li>Next/previous collection items are based on collection's default sort order</li>
+<li>e.g. <code>$item-&gt;getNext()-&gt;title</code> or <code>$item-&gt;getPrevious()-&gt;path</code></li>
+</ul>
+
+<hr />
+
+<h3>Collections can exist without templates</h3>
+
+<ul>
+<li>The <code>extends</code> directive can be omitted from the YAML front matter of a collection's items, allowing for collections that aren't tied to a particular template. See the "People" collection for an example.</li>
+</ul>
+
+<hr />
+
+<h3>Access Jigsaw collections as Illuminate collections</h3>
+
+<ul>
+<li>For example, <code>@foreach ($people-&gt;sortBy('age') as $person)</code> or <code>$products-&gt;sum('price')</code></li>
+<li>Can even use helper functions defined in <code>config.php</code> or <code>collections.php</code>:</li>
+</ul>
+
+<pre><code>@foreach ($products-&gt;sortByDesc(function ($data) { return $data-&gt;priceWithTax(); })
+</code></pre>
+
+<ul>
+<li>Content of a collection item can be referenced with <code>getContent()</code>.</li>
+</ul>
+
+<hr />
+
+<h3>Additional pagination variables</h3>
+
+<ul>
+<li><code>$pagination-&gt;first</code>, <code>last</code>, <code>currentPage</code>, <code>totalPages</code></li>
+<li><code>$pagination-&gt;pages</code> can be iterated over to build numeric page links (<code>1</code> | <code>2</code> | <code>3</code>), or individual pages can be referenced as <code>$pagination-&gt;pages[1]</code></li>
+</ul>
+
+<hr />
+
+<h3>Helper functions</h3>
+
+<ul>
+<li>Any helper functions defined in <code>collections.php</code> under the <code>helpers =&gt; []</code> key are available within Blade templates for a collection item; previously, they were only available in an index template when iterating over a collection.</li>
+<li>Helper functions can also be defined globally in <code>config.php</code> and referenced in any Blade template as <code>$functionName($parameter)</code></li>
+</ul>
+
+<hr />
+
+<h3>Metadata</h3>
+
+<ul>
+<li>available in Blade templates for all pages (including collection items and regular pages)</li>
+<li><code>filename</code> displays current page's filename (without extension)</li>
+<li><code>extension</code> displays current page's file extension (e.g. <code>md</code>, <code>blade.php</code>, etc.)</li>
+<li><code>path</code> is path to current page, relative to site root</li>
+<li><code>url</code> concatenates the site base url (if specified in <code>config.php</code>) with <code>path</code> for fully-qualified url to current page</li>
+<li>for collection items, <code>collection</code> displays the name of the collection an item belongs to</li>
+</ul>
+
+<hr />
+
+<h3>Enhanced Blade and Markdown support</h3>
+
+<ul>
+<li>Collection items can now be Blade files, in addition to Markdown</li>
+<li>Blade files (whether they are items in a collection, or not) can include YAML frontmatter variables</li>
+<li>Markdown files can use Blade syntax in them—for displaying data, control structures, etc. Files with a <code>.blade.md</code> extension will be processed first by Blade, before the markdown is parsed.</li>
+<li>Blade templates can <code>@include</code> markdown files as partials (which will be parsed). Addresses feature request https://github.com/tighten/jigsaw/issues/62</li>
+</ul>
+
+<hr />
+
+<h3>Blade support for other file types</h3>
+
+<ul>
+<li>Like the <code>.blade.md</code> support described above, other non-HTML, text-type files can be processed with Blade first, including <code>.blade.js</code>, <code>.blade.json</code>, <code>.blade.xml</code>, <code>.blade.rss</code>, <code>.blade.txt</code>, and <code>.blade.text</code>. After the file is first processed by Blade, the resulting file will maintain its filetype extension in the URL (e.g. <code>some-file.blade.xml</code> will become the URL <code>/some-file.xml</code>).</li>
+<li>Addresses feature request https://github.com/tighten/jigsaw/issues/56</li>
+</ul>
+
+<hr />
+
+<h3>Support for multiple parent templates</h3>
+
+<ul>
+<li>Collection items can extend multiple parent templates, by specifying them in the <code>extends</code> parameter in the YAML front matter. This creates one URL for each template, allowing, for example, a collection item to have <code>/web/item</code> and a <code>/api/item</code> endpoints, or <code>/summary</code> and <code>/detail</code> views.</li>
+<li>In <code>collections.php</code>, permalink structures can be specified uniquely for each template type:</li>
+</ul>
+
+<pre><code>    'path' =&gt; [
+        'web' =&gt; 'people/{date|Y-m-d}/{+filename}',
+        'api' =&gt; 'people/api/{date|Y-m-d}/{+filename}'
+    ]
+</code></pre>
+
+<hr />
+
+<h3>Updates to variable referencing</h3>
+
+<ul>
+<li>Globally-available variables and helper functions that are defined in <code>config.php</code> are accessed with the <code>$config-&gt;</code> namespace, e.g. <code>$config-&gt;some_variable</code> or <code>$config-&gt;someFunction()</code></li>
+<li>Collections defined in <code>collections.php</code> are referenced by their name, with no prefix. A collection named <code>posts</code> would be referenced as <code>$posts</code>, e.g. <code>$posts-&gt;first()-&gt;path</code></li>
+<li>Collection items and their variables/functions are referenced by <code>$item</code>, e.g. <code>$item-&gt;author</code> or <code>$item-&gt;excerpt()</code></li>
+<li>For better readability in templates, collection items can also be referenced automatically by the singular version of the collection name, <em>if</em> the collection name is plural. So the items of a collection of <code>people</code> can be referenced as <code>$person-&gt;first_name</code>. <code>$person-&gt;first_name</code> and <code>$item-&gt;first_name</code> will return the same thing. (If a collection name's plural and singular are the same, this shorthand won't be available; so a collection of <code>$sheep</code> is out of luck.)</li>
+</ul>
+
+<hr />
+
+<h3>5.3 Update</h3>
+
+<ul>
+<li>Illuminate dependencies have been updated to version 5.3</li>
+<li>The code for allowing a custom <code>bootstrap.php</code> file, providing the ability to customize bindings (for extending the markdown parser, for instance) has been updated (from https://github.com/tighten/jigsaw/pull/68)</li>
+</ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+<!DOCTYPE html>
