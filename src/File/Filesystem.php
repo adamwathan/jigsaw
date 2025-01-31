@@ -72,7 +72,7 @@ class Filesystem extends BaseFilesystem
             $finder->notPath($this->getWildcardRegex($pattern));
         });
 
-        return $finder;
+        return $finder->sortByName();
     }
 
     protected function getWildcardRegex($pattern)
