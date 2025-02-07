@@ -14,7 +14,7 @@ class TemporaryFilesystem
     public function __construct($tempPath, $filesystem = null)
     {
         $this->tempPath = $tempPath;
-        $this->filesystem = $filesystem ?: new Filesystem();
+        $this->filesystem = $filesystem ?: new Filesystem;
     }
 
     public function buildTempPath($filename, $extension)

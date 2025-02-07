@@ -41,7 +41,7 @@ class EventBus
             if (is_callable($task)) {
                 $task($jigsaw);
             } else {
-                (new $task())->handle($jigsaw);
+                (new $task)->handle($jigsaw);
             }
         });
     }

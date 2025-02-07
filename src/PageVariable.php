@@ -32,10 +32,10 @@ class PageVariable extends IterableObject
     public function getPath($key = null)
     {
         if (($key || $this->_meta->extending) && $this->_meta->path instanceof IterableObject) {
-            return $this->_meta->path->get($key ?: $this->getExtending());
+            return $this->enforceTrailingSlash($this->_meta->path->get($key ?: $this->getExtending()));
         }
 
-        return (string) $this->_meta->path;
+        return $this->enforceTrailingSlash((string) $this->_meta->path);
     }
 
     public function getPaths()
@@ -46,10 +46,10 @@ class PageVariable extends IterableObject
     public function getUrl($key = null)
     {
         if (($key || $this->_meta->extending) && $this->_meta->path instanceof IterableObject) {
-            return $this->_meta->url->get($key ?: $this->getExtending());
+            return $this->enforceTrailingSlash($this->_meta->url->get($key ?: $this->getExtending()));
         }
 
-        return (string) $this->_meta->url;
+        return $this->enforceTrailingSlash((string) $this->_meta->url);
     }
 
     public function getUrls()
@@ -60,5 +60,21 @@ class PageVariable extends IterableObject
     protected function missingHelperError($functionName)
     {
         return 'No function named "' . $functionName . '" was found in the file "config.php".';
+    }
+
+    protected function enforceTrailingSlash($path)
+    {
+        return $path && app()->config->get('trailing_slash') && ! $this->pathIsFile($path)
+            ? Str::finish($path, '/')
+            : $path;
+    }
+
+    protected function pathIsFile($path)
+    {
+        $final_extension = $this->_meta->extending
+            ? (Str::contains(Str::afterLast($path, '/'), '.') ? Str::afterLast($path, '.') : null)
+            : Str::afterLast($this->_meta->extension, '.');
+
+        return $final_extension && $final_extension !== 'md' && $final_extension !== 'php';
     }
 }

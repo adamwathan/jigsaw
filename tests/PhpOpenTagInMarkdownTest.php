@@ -38,6 +38,6 @@ class PhpOpenTagInMarkdownTest extends TestCase
 
     protected function getPageDataDummy()
     {
-        return PageData::withPageMetaData(new IterableObject(), []);
+        return PageData::withPageMetaData(new IterableObject, []);
     }
 }

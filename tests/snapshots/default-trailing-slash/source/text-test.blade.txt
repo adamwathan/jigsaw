@@ -1,0 +1,16 @@
+---
+local: stored in the YAML header
+---
+@extends('_layouts.text-master')
+
+@section('text')
+
+    This is a test of a file that will be parsed by Blade first, then output as a plain-text `.txt` file.
+
+        - It is reachable at the URL `/text-test.txt`
+
+        - It can contain global variables: {{ $page->global_variable }}
+
+        - ...or local variables: {{ $page->local }}
+
+@endsection

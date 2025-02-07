@@ -1,0 +1,8 @@
+Some markdown included now...
+
+variable in blade markdown header
+
+_the name should be above_
+
+hello global! #98765
+

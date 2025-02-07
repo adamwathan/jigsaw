@@ -30,7 +30,7 @@ class SnapshotsTest extends PHPUnit
 
     public static function snapshots(): array
     {
-        return collect((new Filesystem())->directories(static::source()))
+        return collect((new Filesystem)->directories(static::source()))
             ->map(fn ($path) => basename($path))
             ->reject(fn ($name) => Str::endsWith($name, '_snapshot'))
             // Prepend the test command with JIGSAW_SNAPSHOTS=<snapshot-names> to run specific snapshot tests
@@ -90,7 +90,7 @@ class SnapshotsTest extends PHPUnit
         return implode(DIRECTORY_SEPARATOR, array_filter([__DIR__, 'snapshots', $name]));
     }
 
-    private function testOutput(string $name): string
+    private function test_output(string $name): string
     {
         $output = $name === 'environment-specific-config-file' ? 'build_staging' : 'build_local';
 

@@ -196,7 +196,7 @@ class TestCase extends PHPUnit
         ];
 
         if ($pretty) {
-            $this->app->instance('outputPathResolver', new PrettyOutputPathResolver());
+            $this->app->instance('outputPathResolver', new PrettyOutputPathResolver);
         }
 
         return $this->app

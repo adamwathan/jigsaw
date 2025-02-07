@@ -1,0 +1,5 @@
+Testing getUrl handler in a file with non-html extension
+
+{{ $page->getPath() }} should be /extension-url-test.atom
+
+{{ $page->getUrl() }} should end with /extension-url-test.atom

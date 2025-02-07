@@ -1,0 +1,5 @@
+Testing getUrl handler in a file with non-html extension
+
+/extension-url-test.atom should be /extension-url-test.atom
+
+http://jigsaw.test/extension-url-test.atom should end with /extension-url-test.atom

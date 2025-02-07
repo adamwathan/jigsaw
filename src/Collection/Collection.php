@@ -15,7 +15,7 @@ class Collection extends BaseCollection
 
     public static function withSettings(IterableObject $settings, $name)
     {
-        $collection = new static();
+        $collection = new static;
         $collection->settings = $settings;
         $collection->name = $name;
 

@@ -1,0 +1,11 @@
+This is the test-text master template.
+
+
+    This is a test of a file that will be parsed by Blade first, then output as a plain-text `.txt` file.
+
+        - It is reachable at the URL `/text-test.txt`
+
+        - It can contain global variables: some global variable
+
+        - ...or local variables: stored in the YAML header
+

@@ -1,0 +1,222 @@
+<p><a href="/posts/1-my-first-post/" class="nav-list-item ">My First Post</a></p>
+            <p><a href="/posts/2-second-post/" class="nav-list-item ">My Second Post</a></p>
+            <p><a href="/posts/3-third-post/" class="nav-list-item ">My Third Post</a></p>
+            <p><a href="/posts/4-fourth-post/" class="nav-list-item selected">My Fourth Post</a></p>
+            <p><a href="/posts/5-fifth-post/" class="nav-list-item ">My Fifth Post</a></p>
+            <p><a href="/posts/6-sixth-post/" class="nav-list-item ">My Sixth Post</a></p>
+            <p><a href="/posts/7-blade-post/" class="nav-list-item ">My Blade Post</a></p>
+    
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <link rel="stylesheet" href="http://jigsaw.test/css/main.css">
+    </head>
+    <body class="border-t-3 border-primary full-height">
+
+        <nav class="navbar navbar-brand">
+            <div class="container">
+                <div class="navbar-content">
+                    <div>
+                        <a class="link-plain text-xxl flex-y-center" href="http://jigsaw.test">
+                            <strong>Jigsaw Collections Demo</strong>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container m-xs-b-6">
+            <div class="row">
+
+                <div class="col-xs-4">
+                    <nav class="nav-list">
+    <a class="nav-list-item selected" href="http://jigsaw.test/posts">
+        <icon></icon>Posts
+    </a>
+
+    <a class="nav-list-item " href="http://jigsaw.test/pagination">
+        <icon></icon>Pagination
+    </a>
+
+    <a class="nav-list-item " href="http://jigsaw.test/categories/news">
+        <icon></icon>Categories
+    </a>
+
+    <a class="nav-list-item " href="http://jigsaw.test/people">
+        <icon></icon>People
+    </a>
+
+    <a class="nav-list-item " href="http://jigsaw.test/variables">
+        <icon></icon>Variables
+    </a>
+
+    <a class="nav-list-item " href="http://jigsaw.test/json-test.json">
+        <icon></icon>JSON
+    </a>
+
+    <a class="nav-list-item " href="http://jigsaw.test/text-test.txt">
+        <icon></icon>Text
+    </a>
+</nav>
+                    <div class="panel m-xs-t-6">
+    <div class="panel-heading">
+        <h4 class="text-sm wt-light text-uppercase text-brand">Page meta</h4>
+    </div>
+
+    <div class="panel-body">
+        <div class="p-xs-b-4 border-b">
+            <p class="text-xs text-dark-soft text-uppercase">Filename:</p>
+            <p class="p-xs-l-2 text-sm">4-fourth-post</p>
+        </div>
+
+        <div class="p-xs-y-4 border-b">
+            <p class="text-xs text-dark-soft text-uppercase">Extension:</p>
+            <p class="p-xs-l-2 text-sm">blade.md</p>
+        </div>
+
+        <div class="p-xs-y-4 border-b">
+            <p class="text-xs text-dark-soft text-uppercase">Path:</p>
+            <p class="p-xs-l-2 text-sm">/posts/4-fourth-post/</p>
+        </div>
+
+        <div class="p-xs-y-4 border-b">
+            <p class="text-xs text-dark-soft text-uppercase">Base URL:</p>
+            <p class="p-xs-l-2 text-sm">http://jigsaw.test</p>
+        </div>
+
+        <div class="p-xs-y-4 border-b">
+            <p class="text-xs text-dark-soft text-uppercase">URL:</p>
+            <p class="p-xs-l-2 text-sm">http://jigsaw.test/posts/4-fourth-post/</p>
+        </div>
+
+        <div class="p-xs-t-4">
+            <p class="text-xs text-dark-soft text-uppercase">Global Variable:</p>
+            <p class="p-xs-l-2 text-sm">some global variable</p>
+        </div>
+    </div>
+</div>
+                                    </div>
+
+                <div class="col-xs-8 demo-page">
+                        <h4 class="text-uppercase text-dark-soft wt-light">
+        Collection Name: <strong>posts</strong>
+        <br>
+        Collection Name: <strong>posts</strong>
+        <br>
+        Total Posts: <strong>7</strong>
+    </h4>
+
+    <br>
+
+    <h1>My Fourth Post</h1>
+    <h1>My Blade Post</h1>
+
+    <p><small>By Adam Wathan · 04/12/2017 </small></p>
+    <p><small>By Matt Stauffer · 04/01/2016 </small></p>
+
+    <div class="border-t border-b p-xs-t-6 m-xs-b-6">
+        <p class="text-xs text-dark-soft">References to adjacent collection items:</p>
+
+        <div class="row">
+            <div class="col-xs-6 text-left">
+
+                                <p><a href="http://jigsaw.test/posts/3-third-post/">
+                    <icon class="chevron_left m-xs-r-2"></icon>
+                    My Third Post
+                </a></p>
+                
+            </div>
+
+            <div class="col-xs-6 text-right">
+
+                                <p><a href="http://jigsaw.test/posts/5-fifth-post/">
+                    My Fifth Post
+                    <icon class="chevron_right m-xs-l-2"></icon>
+                </a></p>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="panel p-xs-4 m-xs-y-4">
+    <h4>A Blade/Markdown hybrid.</h4>
+</div>
+
+<p>This filename ends with <code>blade.md</code> and is processed by both the Blade parser (first) and then the Markdown parser (second).</p>
+
+<p>So you can mix <code>BLADE</code> and <code>Markdown</code> directives in the same file.</p>
+
+<blockquote>
+  <p>Note that in <code>blade.md</code> files, <code>section</code> can be omitted (as it can in any <code>.md</code> file).</p>
+</blockquote>
+
+<p>You can also <strong>include</strong> any type of file, which will get parsed based on its own file type:</p>
+
+<ul>
+<li><p>Included <strong>Markdown</strong> file</p></li>
+<li><p>Included <strong>Blade</strong> file (with a global variable: <em>some global variable</em>)</p></li>
+<li></li>
+</ul>
+
+<p>Included <strong>Blade</strong>/<strong>Markdown</strong> hybrid file (with a global variable: <em>some global variable</em>)</p>
+
+<ul>
+<li>Included text-only (.txt) file</li>
+</ul>
+
+    <div class="border-t border-b m-xs-t-6 p-xs-y-6">
+        <p class="text-xs text-dark-soft">User-defined helper function <code>preview()</code> from <code>collections.php</code>, invoked at the item level:</p>
+
+        <p class="text-sm"><em>
+    A Blade/Markdown hybrid.
+
+
+This filename ends with blade.md and is processed by both the Blade  ...</em></p>
+    </div>
+
+        <div class="border-b p-xs-y-6">
+        <p class="text-xs text-dark-soft">User-defined helper function, invoked on adjacent collection items</p>
+
+        <h4><strong>My Fifth Post</strong></h4>
+
+        <p class="text-sm"><em>Normal Markdown post. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus earum dist...</em></p>
+    </div>
+    
+    <div class="border-b p-xs-y-6">
+        <p class="text-xs text-dark-soft">Access a Jigsaw Collection as Illuminate Collection</p>
+
+        <h4>Related <a href="http://jigsaw.test/categories/faq"><em>faq</em></a> posts:</h4>
+
+        <div class="row">
+                        <div class="col-xs-9 col-xs-offset-3 p-xs-y-2 border-b">
+                <a href="http://jigsaw.test/posts/3-third-post/">My Third Post</a>:
+                <em>...</em>
+            </div>
+                        <div class="col-xs-9 col-xs-offset-3 p-xs-y-2 border-b">
+                <a href="http://jigsaw.test/posts/4-fourth-post/">My Fourth Post</a>:
+                <em>
+    A Blade/Markdown hybrid.
+
+
+This filename ends...</em>
+            </div>
+                        <div class="col-xs-9 col-xs-offset-3 p-xs-y-2 border-b">
+                <a href="http://jigsaw.test/posts/6-sixth-post/">My Sixth Post</a>:
+                <em>...</em>
+            </div>
+                    </div>
+    </div>
+
+    <div class="border-b p-xs-y-6">
+        <p class="text-xs text-dark-soft">Dump of <code>$page</code> (can also be accessed as singular version of collection name, i.e. <code>$post</code>)</p>
+    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+<!DOCTYPE html>

@@ -24,7 +24,7 @@ class InitCommandTest extends TestCase
 
         $this->createSource([]);
         $command = $this->app->make(InitCommand::class);
-        $command->setApplication(new Application());
+        $command->setApplication(new Application);
         $command->setBase($this->tmp);
 
         $console = new CommandTester($command);
@@ -46,7 +46,7 @@ class InitCommandTest extends TestCase
 
         $this->createSource([]);
         $command = $this->app->make(InitCommand::class);
-        $command->setApplication(new Application());
+        $command->setApplication(new Application);
         $command->setBase($this->tmp);
 
         $console = new CommandTester($command);
@@ -61,7 +61,7 @@ class InitCommandTest extends TestCase
     public function init_command_displays_error_if_preset_name_is_invalid()
     {
         $command = $this->app->make(InitCommand::class);
-        $command->setApplication(new Application());
+        $command->setApplication(new Application);
         $console = new CommandTester($command);
         $console->execute(['preset' => 'invalid']);
 
@@ -73,7 +73,7 @@ class InitCommandTest extends TestCase
     {
         $this->createSource(['source' => []]);
         $command = $this->app->make(InitCommand::class);
-        $command->setApplication(new Application());
+        $command->setApplication(new Application);
         $command->setBase($this->tmp);
 
         $console = new CommandTester($command);
@@ -88,7 +88,7 @@ class InitCommandTest extends TestCase
     {
         $this->createSource(['config.php' => '']);
         $command = $this->app->make(InitCommand::class);
-        $command->setApplication(new Application());
+        $command->setApplication(new Application);
         $command->setBase($this->tmp);
 
         $console = new CommandTester($command);
@@ -110,7 +110,7 @@ class InitCommandTest extends TestCase
 
         $this->createSource(['config.php' => '']);
         $command = $this->app->make(InitCommand::class);
-        $command->setApplication(new Application());
+        $command->setApplication(new Application);
         $command->setBase($this->tmp);
 
         $console = new CommandTester($command);
@@ -134,7 +134,7 @@ class InitCommandTest extends TestCase
 
         $this->createSource(['config.php' => '']);
         $command = $this->app->make(InitCommand::class);
-        $command->setApplication(new Application());
+        $command->setApplication(new Application);
         $command->setBase($this->tmp);
 
         $console = new CommandTester($command);
@@ -157,7 +157,7 @@ class InitCommandTest extends TestCase
 
         $this->createSource(['config.php' => '']);
         $command = $this->app->make(InitCommand::class);
-        $command->setApplication(new Application());
+        $command->setApplication(new Application);
         $command->setBase($this->tmp);
 
         $console = new CommandTester($command);
@@ -180,7 +180,7 @@ class InitCommandTest extends TestCase
 
         $this->createSource(['config.php' => '']);
         $command = $this->app->make(InitCommand::class);
-        $command->setApplication(new Application());
+        $command->setApplication(new Application);
         $command->setBase($this->tmp);
 
         $console = new CommandTester($command);
@@ -203,7 +203,7 @@ class InitCommandTest extends TestCase
 
         $this->createSource(['config.php' => '']);
         $command = $this->app->make(InitCommand::class);
-        $command->setApplication(new Application());
+        $command->setApplication(new Application);
         $command->setBase($this->tmp);
 
         $console = new CommandTester($command);

@@ -18,12 +18,12 @@ class DefaultScaffoldInstallerTest extends TestCase
     public function installer_installs_basic_scaffold_files()
     {
         $this->createSource([]);
-        $builder = new PresetScaffoldBuilder(new Filesystem(), Mockery::mock(PresetPackage::class), new ProcessRunner());
+        $builder = new PresetScaffoldBuilder(new Filesystem, Mockery::mock(PresetPackage::class), new ProcessRunner);
         $builder->setBase($this->tmp);
 
         $this->assertCount(0, app('files')->filesAndDirectories($this->tmp));
 
-        (new DefaultInstaller())->install($builder, ['commands' => []]);
+        (new DefaultInstaller)->install($builder, ['commands' => []]);
 
         $this->assertFileExists($this->tmpPath('source'));
         $this->assertFileExists($this->tmpPath('package.json'));
@@ -35,10 +35,10 @@ class DefaultScaffoldInstallerTest extends TestCase
     public function installer_deletes_single_base_file_specified_in_delete_array()
     {
         $this->createSource([]);
-        $builder = new PresetScaffoldBuilder(new Filesystem(), Mockery::mock(PresetPackage::class), new ProcessRunner());
+        $builder = new PresetScaffoldBuilder(new Filesystem, Mockery::mock(PresetPackage::class), new ProcessRunner);
         $builder->setBase($this->tmp);
 
-        (new DefaultInstaller())->install($builder, [
+        (new DefaultInstaller)->install($builder, [
             'delete' => 'config.php',
             'commands' => [],
         ]);
@@ -51,10 +51,10 @@ class DefaultScaffoldInstallerTest extends TestCase
     public function installer_deletes_multiple_base_files_specified_in_delete_array()
     {
         $this->createSource([]);
-        $builder = new PresetScaffoldBuilder(new Filesystem(), Mockery::mock(PresetPackage::class), new ProcessRunner());
+        $builder = new PresetScaffoldBuilder(new Filesystem, Mockery::mock(PresetPackage::class), new ProcessRunner);
         $builder->setBase($this->tmp);
 
-        (new DefaultInstaller())->install($builder, [
+        (new DefaultInstaller)->install($builder, [
             'delete' => ['config.php', 'package.json'],
             'commands' => [],
         ]);
@@ -68,10 +68,10 @@ class DefaultScaffoldInstallerTest extends TestCase
     public function installer_deletes_base_directories_specified_in_delete_array()
     {
         $this->createSource([]);
-        $builder = new PresetScaffoldBuilder(new Filesystem(), Mockery::mock(PresetPackage::class), new ProcessRunner());
+        $builder = new PresetScaffoldBuilder(new Filesystem, Mockery::mock(PresetPackage::class), new ProcessRunner);
         $builder->setBase($this->tmp);
 
-        (new DefaultInstaller())->install($builder, [
+        (new DefaultInstaller)->install($builder, [
             'delete' => ['source'],
             'commands' => [],
         ]);
@@ -100,10 +100,10 @@ class DefaultScaffoldInstallerTest extends TestCase
         ]);
         $package = Mockery::mock(PresetPackage::class);
         $package->path = $this->tmp . '/package';
-        $builder = new PresetScaffoldBuilder(new Filesystem(), $package, new ProcessRunner());
+        $builder = new PresetScaffoldBuilder(new Filesystem, $package, new ProcessRunner);
         $builder->setBase($this->tmp);
 
-        (new DefaultInstaller())->install($builder, ['commands' => []]);
+        (new DefaultInstaller)->install($builder, ['commands' => []]);
 
         $this->assertFileExists($this->tmpPath('.dotfile'));
         $this->assertFileExists($this->tmpPath('preset-file.php'));
@@ -122,10 +122,10 @@ class DefaultScaffoldInstallerTest extends TestCase
         ]);
         $package = Mockery::mock(PresetPackage::class);
         $package->path = $this->tmp . '/package';
-        $builder = new PresetScaffoldBuilder(new Filesystem(), $package, new ProcessRunner());
+        $builder = new PresetScaffoldBuilder(new Filesystem, $package, new ProcessRunner);
         $builder->setBase($this->tmp);
 
-        (new DefaultInstaller())->install($builder, ['commands' => []]);
+        (new DefaultInstaller)->install($builder, ['commands' => []]);
 
         $this->assertFileExists($this->tmpPath('config.php'));
     }
@@ -140,10 +140,10 @@ class DefaultScaffoldInstallerTest extends TestCase
         ]);
         $package = Mockery::mock(PresetPackage::class);
         $package->path = $this->tmp . '/package';
-        $builder = new PresetScaffoldBuilder(new Filesystem(), $package, new ProcessRunner());
+        $builder = new PresetScaffoldBuilder(new Filesystem, $package, new ProcessRunner);
         $builder->setBase($this->tmp);
 
-        (new DefaultInstaller())->install($builder, ['commands' => []]);
+        (new DefaultInstaller)->install($builder, ['commands' => []]);
 
         $this->assertOutputFile('config.php', 'new config file from preset');
     }
@@ -165,10 +165,10 @@ class DefaultScaffoldInstallerTest extends TestCase
         ]);
         $package = Mockery::mock(PresetPackage::class);
         $package->path = $this->tmp . '/package';
-        $builder = new PresetScaffoldBuilder(new Filesystem(), $package, new ProcessRunner());
+        $builder = new PresetScaffoldBuilder(new Filesystem, $package, new ProcessRunner);
         $builder->setBase($this->tmp);
 
-        (new DefaultInstaller())->install($builder, [
+        (new DefaultInstaller)->install($builder, [
             'ignore' => [
                 'ignore-this.php',
                 'ignore-directory',
@@ -199,10 +199,10 @@ class DefaultScaffoldInstallerTest extends TestCase
         ]);
         $package = Mockery::mock(PresetPackage::class);
         $package->path = $this->tmp . '/package';
-        $builder = new PresetScaffoldBuilder(new Filesystem(), $package, new ProcessRunner());
+        $builder = new PresetScaffoldBuilder(new Filesystem, $package, new ProcessRunner);
         $builder->setBase($this->tmp);
 
-        (new DefaultInstaller())->install($builder, [
+        (new DefaultInstaller)->install($builder, [
             'ignore' => [
                 'ignore*',
             ],
@@ -225,10 +225,10 @@ class DefaultScaffoldInstallerTest extends TestCase
         ]);
         $package = Mockery::mock(PresetPackage::class);
         $package->path = $this->tmp . '/package';
-        $builder = new PresetScaffoldBuilder(new Filesystem(), $package, new ProcessRunner());
+        $builder = new PresetScaffoldBuilder(new Filesystem, $package, new ProcessRunner);
         $builder->setBase($this->tmp);
 
-        (new DefaultInstaller())->install($builder, ['commands' => []]);
+        (new DefaultInstaller)->install($builder, ['commands' => []]);
 
         $this->assertFileMissing($this->tmpPath('node_modules'));
     }
@@ -243,10 +243,10 @@ class DefaultScaffoldInstallerTest extends TestCase
         ]);
         $package = Mockery::mock(PresetPackage::class);
         $package->path = $this->tmp . '/package';
-        $builder = new PresetScaffoldBuilder(new Filesystem(), $package, new ProcessRunner());
+        $builder = new PresetScaffoldBuilder(new Filesystem, $package, new ProcessRunner);
         $builder->setBase($this->tmp);
 
-        (new DefaultInstaller())->install($builder, ['commands' => []]);
+        (new DefaultInstaller)->install($builder, ['commands' => []]);
 
         $this->assertFileMissing($this->tmpPath('vendor'));
     }
@@ -261,10 +261,10 @@ class DefaultScaffoldInstallerTest extends TestCase
         ]);
         $package = Mockery::mock(PresetPackage::class);
         $package->path = $this->tmp . '/package';
-        $builder = new PresetScaffoldBuilder(new Filesystem(), $package, new ProcessRunner());
+        $builder = new PresetScaffoldBuilder(new Filesystem, $package, new ProcessRunner);
         $builder->setBase($this->tmp);
 
-        (new DefaultInstaller())->install($builder, ['commands' => []]);
+        (new DefaultInstaller)->install($builder, ['commands' => []]);
 
         $this->assertFileMissing($this->tmpPath('init.php'));
     }
@@ -280,10 +280,10 @@ class DefaultScaffoldInstallerTest extends TestCase
         ]);
         $package = Mockery::mock(PresetPackage::class);
         $package->path = $this->tmp . '/package';
-        $builder = new PresetScaffoldBuilder(new Filesystem(), $package, new ProcessRunner());
+        $builder = new PresetScaffoldBuilder(new Filesystem, $package, new ProcessRunner);
         $builder->setBase($this->tmp);
 
-        (new DefaultInstaller())->install($builder, ['commands' => []]);
+        (new DefaultInstaller)->install($builder, ['commands' => []]);
 
         $this->assertFileMissing($this->tmpPath('build_local'));
         $this->assertFileMissing($this->tmpPath('build_production'));
@@ -300,7 +300,7 @@ class DefaultScaffoldInstallerTest extends TestCase
         $builder->shouldReceive('copyPresetFiles')->andReturn($builder);
         $builder->shouldReceive('mergeComposerDotJson')->andReturn($builder);
 
-        $installer = new DefaultInstaller();
+        $installer = new DefaultInstaller;
         $installer->install($builder);
 
         $builder->shouldHaveReceived('runCommands')->with($installer::DEFAULT_COMMANDS);
@@ -317,7 +317,7 @@ class DefaultScaffoldInstallerTest extends TestCase
         $builder->shouldReceive('copyPresetFiles')->andReturn($builder);
         $builder->shouldReceive('mergeComposerDotJson')->andReturn($builder);
 
-        $installer = new DefaultInstaller();
+        $installer = new DefaultInstaller;
         $installer->install($builder, ['commands' => []]);
 
         $builder->shouldHaveReceived('runCommands')->with([]);
@@ -334,7 +334,7 @@ class DefaultScaffoldInstallerTest extends TestCase
         $builder->shouldReceive('copyPresetFiles')->andReturn($builder);
         $builder->shouldReceive('mergeComposerDotJson')->andReturn($builder);
 
-        $installer = new DefaultInstaller();
+        $installer = new DefaultInstaller;
         $installer->install($builder, ['commands' => ['yarn']]);
 
         $builder->shouldHaveReceived('runCommands')->with(['yarn']);
@@ -357,10 +357,10 @@ class DefaultScaffoldInstallerTest extends TestCase
         ]);
         $package = Mockery::mock(PresetPackage::class);
         $package->path = $this->tmp . '/package';
-        $builder = new PresetScaffoldBuilder(new Filesystem(), $package, new ProcessRunner());
+        $builder = new PresetScaffoldBuilder(new Filesystem, $package, new ProcessRunner);
         $builder->setBase($this->tmp);
 
-        (new DefaultInstaller())->install($builder, ['commands' => [], 'delete' => 'composer.json']);
+        (new DefaultInstaller)->install($builder, ['commands' => [], 'delete' => 'composer.json']);
 
         $this->assertFileExists($this->tmpPath('composer.json'));
         $this->assertEquals($old_composer, json_decode(file_get_contents($this->tmpPath('composer.json')), true));
@@ -389,10 +389,10 @@ class DefaultScaffoldInstallerTest extends TestCase
         ]);
         $package = Mockery::mock(PresetPackage::class);
         $package->path = $this->tmp . '/package';
-        $builder = new PresetScaffoldBuilder(new Filesystem(), $package, new ProcessRunner());
+        $builder = new PresetScaffoldBuilder(new Filesystem, $package, new ProcessRunner);
         $builder->setBase($this->tmp);
 
-        (new DefaultInstaller())->install($builder, ['commands' => [], 'delete' => 'composer.json']);
+        (new DefaultInstaller)->install($builder, ['commands' => [], 'delete' => 'composer.json']);
 
         $new_composer = json_decode(file_get_contents($this->tmpPath('composer.json')), true);
 
@@ -424,10 +424,10 @@ class DefaultScaffoldInstallerTest extends TestCase
         ]);
         $package = Mockery::mock(PresetPackage::class);
         $package->path = $this->tmp . '/package';
-        $builder = new PresetScaffoldBuilder(new Filesystem(), $package, new ProcessRunner());
+        $builder = new PresetScaffoldBuilder(new Filesystem, $package, new ProcessRunner);
         $builder->setBase($this->tmp);
 
-        (new DefaultInstaller())->install($builder, ['commands' => [], 'delete' => 'composer.json']);
+        (new DefaultInstaller)->install($builder, ['commands' => [], 'delete' => 'composer.json']);
 
         $new_composer = json_decode(file_get_contents($this->tmpPath('composer.json')), true);
 
@@ -446,10 +446,10 @@ class DefaultScaffoldInstallerTest extends TestCase
         ]);
         $package = Mockery::mock(PresetPackage::class);
         $package->path = $this->tmp . '/package';
-        $builder = new PresetScaffoldBuilder(new Filesystem(), $package, new ProcessRunner());
+        $builder = new PresetScaffoldBuilder(new Filesystem, $package, new ProcessRunner);
         $builder->setBase($this->tmp);
 
-        (new DefaultInstaller())->install($builder, ['commands' => [], 'delete' => 'composer.json']);
+        (new DefaultInstaller)->install($builder, ['commands' => [], 'delete' => 'composer.json']);
 
         $this->assertEquals(
             [

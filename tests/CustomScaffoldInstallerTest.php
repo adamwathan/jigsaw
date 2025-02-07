@@ -18,12 +18,12 @@ class CustomScaffoldInstallerTest extends TestCase
     public function custom_installer_installs_basic_scaffold_files()
     {
         $this->createSource([]);
-        $builder = new PresetScaffoldBuilder(new Filesystem(), Mockery::mock(PresetPackage::class), new ProcessRunner());
+        $builder = new PresetScaffoldBuilder(new Filesystem, Mockery::mock(PresetPackage::class), new ProcessRunner);
         $builder->setBase($this->tmp);
 
         $this->assertCount(0, app('files')->filesAndDirectories($this->tmp));
 
-        (new CustomInstaller())->install($builder)
+        (new CustomInstaller)->install($builder)
             ->setup();
 
         $this->assertFileExists($this->tmpPath('source'));
@@ -36,10 +36,10 @@ class CustomScaffoldInstallerTest extends TestCase
     public function installer_deletes_single_base_file_specified_in_delete_array()
     {
         $this->createSource([]);
-        $builder = new PresetScaffoldBuilder(new Filesystem(), Mockery::mock(PresetPackage::class), new ProcessRunner());
+        $builder = new PresetScaffoldBuilder(new Filesystem, Mockery::mock(PresetPackage::class), new ProcessRunner);
         $builder->setBase($this->tmp);
 
-        (new CustomInstaller())->install($builder)
+        (new CustomInstaller)->install($builder)
             ->setup()
             ->delete('config.php');
 
@@ -51,10 +51,10 @@ class CustomScaffoldInstallerTest extends TestCase
     public function installer_deletes_multiple_base_files_specified_in_delete_array()
     {
         $this->createSource([]);
-        $builder = new PresetScaffoldBuilder(new Filesystem(), Mockery::mock(PresetPackage::class), new ProcessRunner());
+        $builder = new PresetScaffoldBuilder(new Filesystem, Mockery::mock(PresetPackage::class), new ProcessRunner);
         $builder->setBase($this->tmp);
 
-        (new CustomInstaller())->install($builder)
+        (new CustomInstaller)->install($builder)
             ->setup()
             ->delete([
                 'config.php',
@@ -70,10 +70,10 @@ class CustomScaffoldInstallerTest extends TestCase
     public function installer_deletes_base_directories_specified_in_delete_array()
     {
         $this->createSource([]);
-        $builder = new PresetScaffoldBuilder(new Filesystem(), Mockery::mock(PresetPackage::class), new ProcessRunner());
+        $builder = new PresetScaffoldBuilder(new Filesystem, Mockery::mock(PresetPackage::class), new ProcessRunner);
         $builder->setBase($this->tmp);
 
-        (new CustomInstaller())->install($builder)
+        (new CustomInstaller)->install($builder)
             ->setup()
             ->delete([
                 'source',
@@ -96,10 +96,10 @@ class CustomScaffoldInstallerTest extends TestCase
         ]);
         $package = Mockery::mock(PresetPackage::class);
         $package->path = $this->tmp . '/package';
-        $builder = new PresetScaffoldBuilder(new Filesystem(), $package, new ProcessRunner());
+        $builder = new PresetScaffoldBuilder(new Filesystem, $package, new ProcessRunner);
         $builder->setBase($this->tmp);
 
-        (new CustomInstaller())->install($builder)
+        (new CustomInstaller)->install($builder)
             ->setup()
             ->copy();
 
@@ -122,10 +122,10 @@ class CustomScaffoldInstallerTest extends TestCase
         ]);
         $package = Mockery::mock(PresetPackage::class);
         $package->path = $this->tmp . '/package';
-        $builder = new PresetScaffoldBuilder(new Filesystem(), $package, new ProcessRunner());
+        $builder = new PresetScaffoldBuilder(new Filesystem, $package, new ProcessRunner);
         $builder->setBase($this->tmp);
 
-        (new CustomInstaller())->install($builder)
+        (new CustomInstaller)->install($builder)
             ->setup()
             ->copy('preset-file.php');
 
@@ -148,10 +148,10 @@ class CustomScaffoldInstallerTest extends TestCase
         ]);
         $package = Mockery::mock(PresetPackage::class);
         $package->path = $this->tmp . '/package';
-        $builder = new PresetScaffoldBuilder(new Filesystem(), $package, new ProcessRunner());
+        $builder = new PresetScaffoldBuilder(new Filesystem, $package, new ProcessRunner);
         $builder->setBase($this->tmp);
 
-        (new CustomInstaller())->install($builder)
+        (new CustomInstaller)->install($builder)
             ->setup()
             ->copy([
                 'preset-file.php',
@@ -175,10 +175,10 @@ class CustomScaffoldInstallerTest extends TestCase
         ]);
         $package = Mockery::mock(PresetPackage::class);
         $package->path = $this->tmp . '/package';
-        $builder = new PresetScaffoldBuilder(new Filesystem(), $package, new ProcessRunner());
+        $builder = new PresetScaffoldBuilder(new Filesystem, $package, new ProcessRunner);
         $builder->setBase($this->tmp);
 
-        (new CustomInstaller())->install($builder)
+        (new CustomInstaller)->install($builder)
             ->setup()
             ->copy([
                 'preset-file-*.php',
@@ -203,10 +203,10 @@ class CustomScaffoldInstallerTest extends TestCase
         ]);
         $package = Mockery::mock(PresetPackage::class);
         $package->path = $this->tmp . '/package';
-        $builder = new PresetScaffoldBuilder(new Filesystem(), $package, new ProcessRunner());
+        $builder = new PresetScaffoldBuilder(new Filesystem, $package, new ProcessRunner);
         $builder->setBase($this->tmp);
 
-        (new CustomInstaller())->install($builder)
+        (new CustomInstaller)->install($builder)
             ->setup()
             ->copy('.dotfile')
             ->copy('source');
@@ -234,10 +234,10 @@ class CustomScaffoldInstallerTest extends TestCase
         ]);
         $package = Mockery::mock(PresetPackage::class);
         $package->path = $this->tmp . '/package';
-        $builder = new PresetScaffoldBuilder(new Filesystem(), $package, new ProcessRunner());
+        $builder = new PresetScaffoldBuilder(new Filesystem, $package, new ProcessRunner);
         $builder->setBase($this->tmp);
 
-        (new CustomInstaller())->install($builder)
+        (new CustomInstaller)->install($builder)
             ->setup()
             ->from('themes/directory-2')
             ->copy();
@@ -260,10 +260,10 @@ class CustomScaffoldInstallerTest extends TestCase
         ]);
         $package = Mockery::mock(PresetPackage::class);
         $package->path = $this->tmp . '/package';
-        $builder = new PresetScaffoldBuilder(new Filesystem(), $package, new ProcessRunner());
+        $builder = new PresetScaffoldBuilder(new Filesystem, $package, new ProcessRunner);
         $builder->setBase($this->tmp);
 
-        (new CustomInstaller())->install($builder)
+        (new CustomInstaller)->install($builder)
             ->setup()
             ->ignore('.dotfile')
             ->copy();
@@ -287,10 +287,10 @@ class CustomScaffoldInstallerTest extends TestCase
         ]);
         $package = Mockery::mock(PresetPackage::class);
         $package->path = $this->tmp . '/package';
-        $builder = new PresetScaffoldBuilder(new Filesystem(), $package, new ProcessRunner());
+        $builder = new PresetScaffoldBuilder(new Filesystem, $package, new ProcessRunner);
         $builder->setBase($this->tmp);
 
-        (new CustomInstaller())->install($builder)
+        (new CustomInstaller)->install($builder)
             ->setup()
             ->ignore('.dotfile')
             ->ignore('preset-file.php')
@@ -318,10 +318,10 @@ class CustomScaffoldInstallerTest extends TestCase
         ]);
         $package = Mockery::mock(PresetPackage::class);
         $package->path = $this->tmp . '/package';
-        $builder = new PresetScaffoldBuilder(new Filesystem(), $package, new ProcessRunner());
+        $builder = new PresetScaffoldBuilder(new Filesystem, $package, new ProcessRunner);
         $builder->setBase($this->tmp);
 
-        (new CustomInstaller())->install($builder)
+        (new CustomInstaller)->install($builder)
             ->setup()
             ->delete('composer.json');
 
@@ -353,10 +353,10 @@ class CustomScaffoldInstallerTest extends TestCase
         ]);
         $package = Mockery::mock(PresetPackage::class);
         $package->path = $this->tmp . '/package';
-        $builder = new PresetScaffoldBuilder(new Filesystem(), $package, new ProcessRunner());
+        $builder = new PresetScaffoldBuilder(new Filesystem, $package, new ProcessRunner);
         $builder->setBase($this->tmp);
 
-        (new CustomInstaller())->install($builder)
+        (new CustomInstaller)->install($builder)
             ->setup()
             ->copy();
 
@@ -400,10 +400,10 @@ class CustomScaffoldInstallerTest extends TestCase
         ]);
         $package = Mockery::mock(PresetPackage::class);
         $package->path = $this->tmp . '/package';
-        $builder = new PresetScaffoldBuilder(new Filesystem(), $package, new ProcessRunner());
+        $builder = new PresetScaffoldBuilder(new Filesystem, $package, new ProcessRunner);
         $builder->setBase($this->tmp);
 
-        (new CustomInstaller())->install($builder)
+        (new CustomInstaller)->install($builder)
             ->setup()
             ->copy()
             ->from('theme')
@@ -432,10 +432,10 @@ class CustomScaffoldInstallerTest extends TestCase
         ]);
         $package = Mockery::mock(PresetPackage::class);
         $package->path = $this->tmp . '/package';
-        $builder = new PresetScaffoldBuilder(new Filesystem(), $package, new ProcessRunner());
+        $builder = new PresetScaffoldBuilder(new Filesystem, $package, new ProcessRunner);
         $builder->setBase($this->tmp);
 
-        (new CustomInstaller())->install($builder)
+        (new CustomInstaller)->install($builder)
             ->setup()
             ->copy();
 
@@ -454,7 +454,7 @@ class CustomScaffoldInstallerTest extends TestCase
         $console = Mockery::spy(ConsoleSession::class);
         $builder = Mockery::spy(PresetScaffoldBuilder::class);
 
-        (new CustomInstaller())->setConsole($console)
+        (new CustomInstaller)->setConsole($console)
             ->install($builder)
             ->setup()
             ->ask('What is your name?');
@@ -470,7 +470,7 @@ class CustomScaffoldInstallerTest extends TestCase
         $console = Mockery::spy(ConsoleSession::class);
         $builder = Mockery::spy(PresetScaffoldBuilder::class);
 
-        (new CustomInstaller())->setConsole($console)
+        (new CustomInstaller)->setConsole($console)
             ->install($builder)
             ->setup()
             ->ask(
@@ -495,7 +495,7 @@ class CustomScaffoldInstallerTest extends TestCase
         $console = Mockery::spy(ConsoleSession::class);
         $builder = Mockery::spy(PresetScaffoldBuilder::class);
 
-        (new CustomInstaller())->setConsole($console)
+        (new CustomInstaller)->setConsole($console)
             ->install($builder)
             ->setup()
             ->confirm('Continue?');
@@ -511,7 +511,7 @@ class CustomScaffoldInstallerTest extends TestCase
         $package = Mockery::mock(PresetPackage::class);
         $builder = Mockery::spy(PresetScaffoldBuilder::class);
 
-        (new CustomInstaller())->setConsole(null)
+        (new CustomInstaller)->setConsole(null)
             ->install($builder)
             ->setup()
             ->run('yarn');
